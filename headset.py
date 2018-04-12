@@ -5,7 +5,7 @@ class Headset:
         self.headset = mindwave.Headset('/dev/ttyUSB0')
         time.sleep(2)
 
-        self.headset.connect()
+        self.headset.autoconnect()
         print("Connecting...")
 
         while self.headset.status != 'connected':

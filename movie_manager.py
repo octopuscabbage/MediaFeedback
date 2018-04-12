@@ -8,16 +8,14 @@ class MovieManager:
     def __init__(self):
         self.tagged_files = collections.defaultdict(list)
         self.tag_responses = dict()
-        self.process_files("./movies")
+        self.process_files("movies.txt")
 
-    def process_files(self, path):
-        files = os.listdir(path)
-        for movie in files:
+    def process_files(self, file):
+        for movie in open(file).readlines():
             name, tags = movie.split("-")
-            tags,_ = tags.split(".")
             tags = tags.split(",")
             for tag in tags:
-                self.tagged_files[tag.strip()].append(movie)
+                self.tagged_files[tag.strip()].append(name)
                 self.tag_responses[tag] = 1
 
     def tag_positive_response(self, tag, tag_value):
