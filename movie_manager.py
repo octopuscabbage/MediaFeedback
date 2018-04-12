@@ -15,7 +15,8 @@ class MovieManager:
             name, tags = movie.split("-")
             tags = tags.split(",")
             for tag in tags:
-                self.tagged_files[tag.strip().replace("\n","")].append(name)
+                tag = tag.strip().replace("\n","")
+                self.tagged_files[tag].append(name)
                 self.tag_responses[tag] = 1
 
     def tag_positive_response(self, tag, tag_value):
