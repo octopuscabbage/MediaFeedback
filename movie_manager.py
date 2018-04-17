@@ -40,7 +40,7 @@ class MovieManager:
                 if reaction > 0:
                     self.tag_positive_response(tag, reaction)
                 if reaction < 0:
-                    self.tag_negative_response(tag, reaction)
+                    self.tag_negative_response(tag, abs(reaction))
 
 
     def choose_video(self):
