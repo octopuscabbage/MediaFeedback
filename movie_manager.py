@@ -12,13 +12,16 @@ class MovieManager:
 
     def process_files(self, file):
         for movie in open(file).readlines():
-            name, tags = movie.split("-")
-            tags = tags.split(",")
-            for tag in tags:
-                tag = tag.strip().replace("\n","")
-                self.tagged_files[tag].append(name)
-                self.tag_responses[tag] = 1
-
+            try:
+                name, tags = movie.split("@")
+                tags = tags.split(",")
+                for tag in tags:
+                    tag = tag.strip().replace("\n","")
+                    self.tagged_files[tag].append(name)
+                    self.tag_responses[tag] = 1
+            except:
+                print(movie)
+            
     def tag_positive_response(self, tag, tag_value):
         '''
         0 < tag value < 1
